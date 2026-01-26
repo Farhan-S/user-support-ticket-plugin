@@ -1,0 +1,25 @@
+{
+  "name": "user-support-tickets",
+  "version": "1.0.0",
+  "description": "WordPress plugin for user support ticket system with dashboard",
+  "main": "user-support-tickets.php",
+  "scripts": {
+    "build": "echo 'No build process required - using WordPress bundled React'",
+    "zip": "zip -r user-support-tickets.zip . -x '*.git*' 'node_modules/*' '*.zip'"
+  },
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "support",
+    "tickets",
+    "helpdesk",
+    "rest-api",
+    "react"
+  ],
+  "author": "Your Name",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/user-support-tickets"
+  }
+}
