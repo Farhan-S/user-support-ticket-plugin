@@ -74,8 +74,16 @@ class UST_Core {
      * Enqueue public-facing assets
      */
     public function enqueue_public_assets() {
-        // Only load on dashboard page
-        if (!is_page() && !has_shortcode(get_post()->post_content, 'user_dashboard')) {
+        // Check if we're on a page with the shortcode
+        global $post;
+        
+        // Early return if not a post
+        if (!is_a($post, 'WP_Post')) {
+            return;
+        }
+        
+        // Check if shortcode is present
+        if (!has_shortcode($post->post_content, 'user_dashboard')) {
             return;
         }
         
@@ -84,33 +92,18 @@ class UST_Core {
             $this->plugin_name,
             UST_PLUGIN_URL . 'assets/css/style.css',
             array(),
-            $this->version,
+            $this->version . '-' . time(), // Force cache refresh during development
             'all'
         );
         
-        // Enqueue React app
-        $asset_file = UST_PLUGIN_DIR . 'assets/js/build/index.asset.php';
-        
-        if (file_exists($asset_file)) {
-            $asset = include $asset_file;
-            
-            wp_enqueue_script(
-                $this->plugin_name,
-                UST_PLUGIN_URL . 'assets/js/build/index.js',
-                $asset['dependencies'],
-                $asset['version'],
-                true
-            );
-        } else {
-            // Fallback if build doesn't exist
-            wp_enqueue_script(
-                $this->plugin_name,
-                UST_PLUGIN_URL . 'assets/js/dashboard.js',
-                array('wp-element', 'wp-api-fetch'),
-                $this->version,
-                true
-            );
-        }
+        // Enqueue vanilla JavaScript dashboard (no dependencies needed)
+        wp_enqueue_script(
+            $this->plugin_name,
+            UST_PLUGIN_URL . 'assets/js/dashboard.js',
+            array(), // No dependencies - pure vanilla JS
+            $this->version . '-' . time(), // Force cache refresh during development
+            true
+        );
         
         // Localize script
         wp_localize_script(

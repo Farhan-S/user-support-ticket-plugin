@@ -23,6 +23,18 @@
     font-size: 16px;
 }
 
+/* Error State */
+.ust-error {
+    text-align: center;
+    padding: 40px 20px;
+    color: #dc3545;
+    font-size: 16px;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin: 20px;
+}
+
 /* Login Wrapper */
 .ust-login-wrapper {
     display: flex;
