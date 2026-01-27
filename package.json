@@ -4,7 +4,7 @@
   "description": "WordPress plugin for user support ticket system with dashboard",
   "main": "user-support-tickets.php",
   "scripts": {
-    "build": "echo 'No build process required - using WordPress bundled React'",
+    "build": "node init && echo 'No build process required - using WordPress bundled React'",
     "zip": "zip -r user-support-tickets.zip . -x '*.git*' 'node_modules/*' '*.zip'"
   },
   "keywords": [

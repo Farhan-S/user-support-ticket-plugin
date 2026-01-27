@@ -5,10 +5,33 @@ A comprehensive WordPress plugin that provides a complete support ticket system 
 ## 📋 Project Overview
 
 This plugin allows users to log into a frontend dashboard where they can:
+
 - Manage their profile
 - Submit support tickets to the admin
 - View and track their tickets with real-time status updates
 - Reply to tickets for ongoing communication
+
+## 📸 Screenshots
+
+### User Profile Management
+
+![User Profile](demo/profile.png)
+_Manage profile details with real-time updates and validation_
+
+### My Tickets Dashboard
+
+![My Tickets](demo/my-tickets.png)
+_View all tickets with status filtering and statistics_
+
+### Create New Ticket
+
+![Create Ticket](demo/create-tickets.png)
+_Submit support tickets with priority levels_
+
+### Reply System
+
+![Reply System](demo/reply-system.png)
+_Engage in conversation threads with admin replies highlighted_
 
 ## ⚡ Key Features
 
@@ -56,18 +79,21 @@ This plugin allows users to log into a frontend dashboard where they can:
 ## 🛠 Tech Stack
 
 ### Backend
+
 - **PHP 7.4+** - Core plugin development
 - **WordPress REST API** - For all CRUD operations
 - **MySQL** - Database (custom tables for tickets and replies)
 - **WordPress Hooks & Filters** - Plugin architecture
 
 ### Frontend
+
 - **React (via wp.element)** - Modern UI components
 - **Vanilla JavaScript** - For React integration
 - **CSS3** - Responsive styling with Grid and Flexbox
 - **WordPress wp-api-fetch** - API communication
 
 ### Security
+
 - **WordPress Nonce** - CSRF protection
 - **Sanitization Functions** - Input cleaning (`sanitize_text_field`, `wp_kses_post`, `sanitize_email`)
 - **Validation** - Email validation, capability checks
@@ -97,6 +123,7 @@ user-support-tickets/
 ## 🚀 Installation
 
 1. **Upload the Plugin**
+
    ```bash
    # Copy the plugin folder to WordPress plugins directory
    cp -r user-support-tickets /path/to/wordpress/wp-content/plugins/
@@ -117,10 +144,12 @@ user-support-tickets/
 All endpoints use the namespace `ust/v1` and require user authentication.
 
 ### Profile Endpoints
+
 - `GET /ust/v1/profile` - Get current user profile
 - `POST /ust/v1/profile` - Update user profile
 
 ### Ticket Endpoints
+
 - `GET /ust/v1/tickets` - Get all user tickets (optional status filter)
 - `POST /ust/v1/tickets` - Create new ticket
 - `GET /ust/v1/tickets/{id}` - Get single ticket
@@ -128,10 +157,12 @@ All endpoints use the namespace `ust/v1` and require user authentication.
 - `DELETE /ust/v1/tickets/{id}` - Delete ticket
 
 ### Reply Endpoints
+
 - `GET /ust/v1/tickets/{id}/replies` - Get ticket replies
 - `POST /ust/v1/tickets/{id}/replies` - Add reply to ticket
 
 ### Statistics
+
 - `GET /ust/v1/stats` - Get ticket statistics
 
 ## 🔒 Security Features
@@ -186,6 +217,7 @@ All endpoints use the namespace `ust/v1` and require user authentication.
 ### For Developers
 
 **Using the Shortcode:**
+
 ```php
 // In any page or post
 [user_dashboard]
@@ -195,6 +227,7 @@ All endpoints use the namespace `ust/v1` and require user authentication.
 ```
 
 **Extending the Plugin:**
+
 ```php
 // Hook into ticket creation
 add_action('ust_ticket_created', function($ticket_id) {
@@ -211,6 +244,7 @@ add_filter('ust_before_create_ticket', function($data) {
 ## 📊 Database Schema
 
 ### ust_tickets Table
+
 ```sql
 - id (bigint)
 - user_id (bigint)
@@ -223,6 +257,7 @@ add_filter('ust_before_create_ticket', function($data) {
 ```
 
 ### ust_ticket_replies Table
+
 ```sql
 - id (bigint)
 - ticket_id (bigint)
@@ -237,6 +272,7 @@ add_filter('ust_before_create_ticket', function($data) {
 **Total Time: ~6 hours**
 
 ### Time Breakdown:
+
 - **Planning & Architecture** (1 hour)
   - Database schema design
   - API endpoint planning
@@ -263,24 +299,28 @@ add_filter('ust_before_create_ticket', function($data) {
 ## 🎯 Why This Tech Stack?
 
 ### PHP Backend
+
 - **Native WordPress Integration** - No additional dependencies
 - **Performance** - Direct database access via WordPress APIs
 - **Compatibility** - Works with any WordPress hosting
 - **Security** - Leverages WordPress security functions
 
 ### REST API
+
 - **Decoupled Architecture** - Frontend and backend are independent
 - **Scalability** - Easy to add mobile apps or other frontends
 - **Modern Standard** - Industry best practice for web applications
 - **WordPress Core** - Built-in WordPress feature, no plugins needed
 
 ### React (via wp.element)
+
 - **Component-Based** - Reusable, maintainable code
 - **Fast UI Updates** - Virtual DOM for smooth interactions
 - **WordPress Native** - Uses WordPress's bundled React library
 - **No Build Process** - Works directly without webpack/babel setup
 
 ### Custom Database Tables
+
 - **Performance** - Optimized queries without post meta overhead
 - **Scalability** - Handles thousands of tickets efficiently
 - **Data Integrity** - Proper relational structure
@@ -316,6 +356,7 @@ GPL v2 or later - Compatible with WordPress licensing
 ## 👨‍💻 Author
 
 Developed as a comprehensive WordPress plugin demonstration showcasing:
+
 - Modern PHP development practices
 - RESTful API design
 - React integration in WordPress

@@ -4,7 +4,6 @@ wp-config.php
 
 # IDEs
 .idea/
-.vscode/
 *.swp
 *.swo
 *~
@@ -31,3 +30,4 @@ Thumbs.db
 *.tmp
 *.bak
 *.cache
+config.bat
